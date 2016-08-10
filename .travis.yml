@@ -1,24 +1,14 @@
 language: c
-before_install:
-  # - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_1.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :1 -ac -screen 0 1280x1024x16"
-  # - sleep 3
-  # - export DISPLAY=:1.0
-  # - wget http://downloads.arduino.cc/arduino-1.6.5-linux64.tar.xz
-  # - tar xf arduino-1.6.5-linux64.tar.xz
-  # - sudo mv arduino-1.6.5 /usr/local/share/arduino
-  # - sudo ln -s /usr/local/share/arduino/arduino /usr/local/bin/arduino
+before_install: 
 install:
-  - sudo pip install -U platformio
-  # - ln -s $PWD /usr/local/share/arduino/libraries/Adafruit_FONA
-  # - arduino --install-library "Adafruit SleepyDog Library,Adafruit MQTT Library"
-#script:
-#  - arduino --verify --board arduino:avr:uno $PWD/examples/FONAtest/FONAtest.ino
-#  - arduino --verify --board arduino:avr:uno $PWD/examples/IncomingCall/IncomingCall.ino
-#  - arduino --verify --board arduino:avr:uno $PWD/examples/AdafruitIO_GPS/AdafruitIO_GPS.ino
-#notifications:
-#  email:
-#    on_success: change
-#    on_failure: change
+- sudo pip install -U platformio
 script:
- - yes | platformio run
- - ls -l ./.pioenvs/arduino_uno/
+- yes | platformio run
+- ls -l ./.pioenvs/arduino_uno/
+deploy:
+  provider: releases
+  api_key:
+    secure: a2TL8mctehWURx5WByZWwvroEXBiQje5u7r53/bG1tRHE/uliy4oVc+mJhaTwgaIYv/OTXZhpfT6fRNNTagOZ6u8sp9pEtNeS3+Ehd4LvbvLh5Y1A1nIS551FCW7t8buBUv9Q0/vhB/i1tbSEDBitD0qRfZbJ7dAqeRI3hlkv28dzgwYjr5rT0WCXdfRLXI7uDLvzTmWt+0POZrtM9nvq0CRnb7n7ItrVjf+RLqBhnNW9vAkjWhdWPm1hyy3UeM/sXOAD3xVa7C3j0jKcwr0mYORpDAnThd5NxepBOtGH5Vt8YiLy6TrbXSopriDIbWZevp0sGOhrGhLPzeuwqKAqaebKuVRu3K+kNwC03DvfXCBBuPHXOUqkAZYiSndQEpl5UFrqar6EGhpcbpgxUkT2WxodNWfkOF6E5+OJ9YHLZGyu8SFvmqbvmq+uz03oOM7CrciQaWUaC9sJMkx/Z09JfPEe6iLQRxixmuRbS3rsyUBbqg/vsc/9eYrmc6qkk+jT+AnDRFMKiX1cUKZ7NGm2r9sIPREsGXDScA8ePDtWxa1jkEDTjXfF6rYy01TILzg+5to5VE5HQPo7NSFZmkSgd3C/6WKi8knECISJ4+aXfVAZZZyacmAR36PXIuRAgXbIxThdSySDht5OklkVy/RZ458yXMYQJIelUq5xOqFWbg=
+  file: './.pioenvs/arduino_uno/firmware.hex'
+  on:
+    repo: greglanthier/travis-arduino-test
