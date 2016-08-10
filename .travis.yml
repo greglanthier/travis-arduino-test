@@ -10,5 +10,7 @@ deploy:
   api_key:
     secure: a2TL8mctehWURx5WByZWwvroEXBiQje5u7r53/bG1tRHE/uliy4oVc+mJhaTwgaIYv/OTXZhpfT6fRNNTagOZ6u8sp9pEtNeS3+Ehd4LvbvLh5Y1A1nIS551FCW7t8buBUv9Q0/vhB/i1tbSEDBitD0qRfZbJ7dAqeRI3hlkv28dzgwYjr5rT0WCXdfRLXI7uDLvzTmWt+0POZrtM9nvq0CRnb7n7ItrVjf+RLqBhnNW9vAkjWhdWPm1hyy3UeM/sXOAD3xVa7C3j0jKcwr0mYORpDAnThd5NxepBOtGH5Vt8YiLy6TrbXSopriDIbWZevp0sGOhrGhLPzeuwqKAqaebKuVRu3K+kNwC03DvfXCBBuPHXOUqkAZYiSndQEpl5UFrqar6EGhpcbpgxUkT2WxodNWfkOF6E5+OJ9YHLZGyu8SFvmqbvmq+uz03oOM7CrciQaWUaC9sJMkx/Z09JfPEe6iLQRxixmuRbS3rsyUBbqg/vsc/9eYrmc6qkk+jT+AnDRFMKiX1cUKZ7NGm2r9sIPREsGXDScA8ePDtWxa1jkEDTjXfF6rYy01TILzg+5to5VE5HQPo7NSFZmkSgd3C/6WKi8knECISJ4+aXfVAZZZyacmAR36PXIuRAgXbIxThdSySDht5OklkVy/RZ458yXMYQJIelUq5xOqFWbg=
   file: './.pioenvs/arduino_uno/firmware.hex'
+  skip_cleanup: true
   on:
+    tags: true
     repo: greglanthier/travis-arduino-test
