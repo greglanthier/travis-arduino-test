@@ -15,3 +15,5 @@ deploy:
   on:
     tags: true
     repo: greglanthier/travis-arduino-test
+after_deploy:
+  - chandler push
