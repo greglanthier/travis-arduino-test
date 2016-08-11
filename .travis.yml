@@ -1,10 +1,11 @@
 language: c
 before_install: 
+ - gem install chandler
 install:
-- sudo pip install -U platformio
+ - sudo pip install -U platformio
 script:
-- yes | platformio run
-- ls -l ./.pioenvs/arduino_uno/
+ - yes | platformio run
+ - ls -l ./.pioenvs/arduino_uno/
 deploy:
   provider: releases
   api_key:
